@@ -1,4 +1,5 @@
 from pyspark.sql import SparkSession
+from pyspark.sql.functions import sum, round
 
 spark = SparkSession. \
             builder. \
@@ -25,3 +26,10 @@ order_items = spark. \
                             order_item_quantity INT,order_item_subtotal FLOAT, order_item_product_price FLOAT
                             '''
                 )
+
+daily_rev = orders. \
+        filter("order_status IN ('COMPLETE','CLOSED')"). \
+        join(order_items, orders['order_id'] == order_items['order_item_order_id']). \
+        groupBy('order_date'). \
+        agg(round(sum('order_item_subtotal'), 2).alias('revenue')). \
+        orderBy('order_date')
