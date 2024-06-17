@@ -1,0 +1,1 @@
+spark-submit /home/`whoami`/emr/app.py
