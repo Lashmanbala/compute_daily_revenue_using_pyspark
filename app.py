@@ -33,3 +33,8 @@ daily_rev = orders. \
         groupBy('order_date'). \
         agg(round(sum('order_item_subtotal'), 2).alias('revenue')). \
         orderBy('order_date')
+
+daily_rev. \
+        write. \
+        mode('overwrite'). \
+        csv('/user/hadoop/retail_db/result/daily_revenue', header=True)
