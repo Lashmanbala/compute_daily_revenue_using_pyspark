@@ -1,1 +1,3 @@
-spark-submit /home/`whoami`/emr/app.py
+spark-submit \
+    --deploy-mode cluster \
+    /home/`whoami`/emr/app.py
