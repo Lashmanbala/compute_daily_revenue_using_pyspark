@@ -41,4 +41,5 @@ daily_rev = orders. \
 daily_rev. \
         write. \
         mode('overwrite'). \
-        csv(f'{tgt_base_dir}/daily_revenue', header=True)
+        format('delta'). \
+        save(f'{tgt_base_dir}/daily_revenue', header=True)
