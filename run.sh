@@ -8,3 +8,5 @@ spark-submit \
     --conf "spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension" \
     --conf "spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog" \
     /home/`whoami`/emr/app.py >> /home/hadoop/emr/app.log
+
+hdfs dfs -ls ${TGT_BASE_DIR}/daily_revenue
