@@ -1,4 +1,4 @@
-hdfs dfs -rm -R -skipTrash /user/hadoop/retail_db/result/*
+hdfs dfs -rm -R -skipTrash ${TGT_BASE_DIR}/*
 
 spark-submit \
     --deploy-mode cluster \
